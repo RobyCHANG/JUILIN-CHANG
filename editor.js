@@ -52,7 +52,7 @@ function addNewPost(category) {
     document.getElementById('post-title').value = '';
     document.getElementById('post-date').value = '';
     document.getElementById('post-content').value = '';
-    document.getElementById('post-tags').value = '';
+    clearTagCheckboxes('post-tag-options');
     document.getElementById('edit-modal').classList.add('show');
     window.currentCategory = category;
 }
@@ -64,7 +64,7 @@ function editPost(category, index) {
     document.getElementById('post-title').value = post.title;
     document.getElementById('post-date').value = post.date;
     document.getElementById('post-content').value = post.content;
-    document.getElementById('post-tags').value = post.tags.join(', ');
+    setTagCheckboxes('post-tag-options', post.tags);
     document.getElementById('edit-modal').classList.add('show');
     window.currentCategory = category;
 }
@@ -76,7 +76,7 @@ function savePost() {
         title: document.getElementById('post-title').value,
         date: document.getElementById('post-date').value,
         content: document.getElementById('post-content').value,
-        tags: document.getElementById('post-tags').value.split(',').map(t => t.trim()).filter(t => t)
+        tags: getSelectedTags('post-tag-options')
     };
 
     if (currentPostIndex === -1) {
@@ -88,6 +88,34 @@ function savePost() {
     savePosts(category, posts);
     closeModal();
     loadPosts(category);
+}
+
+// 標籤選擇器輔助函數
+function clearTagCheckboxes(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+}
+
+function setTagCheckboxes(containerId, tags) {
+    clearTagCheckboxes(containerId);
+    const container = document.getElementById(containerId);
+    if (!container || !tags) return;
+    container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        if (tags.includes(cb.value)) {
+            cb.checked = true;
+        }
+    });
+}
+
+function getSelectedTags(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return [];
+    const selected = [];
+    container.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+        selected.push(cb.value);
+    });
+    return selected;
 }
 
 function deletePost(category, index) {

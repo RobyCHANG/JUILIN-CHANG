@@ -69,7 +69,22 @@
                 <input type="text" id="post-title" placeholder="文章標題 / Post Title">
                 <input type="text" id="post-date" placeholder="日期 / Date (e.g., 2024.12)">
                 <textarea id="post-content" placeholder="文章內容 / Post Content" rows="6"></textarea>
-                <input type="text" id="post-tags" placeholder="標籤（用逗號分隔）/ Tags (comma separated)">
+                <div class="tag-selector">
+                    <label>標籤 / Tags</label>
+                    <div class="tag-options" id="post-tag-options">
+                        <label class="tag-checkbox"><input type="checkbox" value="LeetCode"> LeetCode</label>
+                        <label class="tag-checkbox"><input type="checkbox" value="Algorithm"> Algorithm</label>
+                        <label class="tag-checkbox"><input type="checkbox" value="Data Structure"> Data
+                            Structure</label>
+                        <label class="tag-checkbox"><input type="checkbox" value="Dynamic Programming"> DP</label>
+                        <label class="tag-checkbox"><input type="checkbox" value="Binary Search"> Binary Search</label>
+                        <label class="tag-checkbox"><input type="checkbox" value="Graph"> Graph</label>
+                        <label class="tag-checkbox"><input type="checkbox" value="Tree"> Tree</label>
+                        <label class="tag-checkbox"><input type="checkbox" value="String"> String</label>
+                        <label class="tag-checkbox"><input type="checkbox" value="Array"> Array</label>
+                        <label class="tag-checkbox"><input type="checkbox" value="Math"> Math</label>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="cancel-btn" onclick="closeModal()" data-zh="取消" data-en="Cancel">取消</button>

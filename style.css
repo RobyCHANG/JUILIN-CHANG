@@ -738,6 +738,53 @@ h3 {
     min-height: 100px;
 }
 
+/* 標籤選擇器 */
+.tag-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tag-selector>label {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.tag-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.tag-checkbox:hover {
+    border-color: var(--primary);
+}
+
+.tag-checkbox:has(input:checked) {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.tag-checkbox input[type="checkbox"] {
+    display: none;
+}
+
 .progress-input {
     display: flex;
     align-items: center;
