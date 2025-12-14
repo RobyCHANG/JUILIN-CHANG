@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刷題感想 | Problem Solving</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-zh="首頁" data-en="Home">首頁</a></li>
+                <li><a href="competitive.html" class="active" data-zh="刷題感想" data-en="Problem Solving">刷題感想</a></li>
+                <li><a href="languages.html" data-zh="語言學習" data-en="Languages">語言學習</a></li>
+                <li><a href="school.html" data-zh="學校進度" data-en="School">學校進度</a></li>
+                <li><a href="projects.html" data-zh="專案經驗" data-en="Projects">專案經驗</a></li>
+                <li><a href="contact.html" data-zh="聯繫我" data-en="Contact">聯繫我</a></li>
+                <li class="lang-switcher">
+                    <select id="language-select" onchange="switchLanguage(this.value)">
+                        <option value="zh">繁體中文</option>
+                        <option value="en">English</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1 data-zh="🏆 競賽刷題感想" data-en="🏆 Problem Solving Reflections">🏆 競賽刷題感想</h1>
+            <p data-zh="記錄我的演算法學習與刷題心得" data-en="Documenting my algorithm learning and problem-solving journey">
+                記錄我的演算法學習與刷題心得</p>
+        </section>
+
+        <section class="content-section">
+            <div class="toolbar">
+                <button class="add-btn" onclick="addNewPost('competitive')" data-zh="+ 新增文章" data-en="+ New Post">+
+                    新增文章</button>
+            </div>
+
+            <div id="competitive-posts" class="blog-list">
+                <!-- 文章會動態載入 -->
+            </div>
+        </section>
+    </main>
+
+    <!-- 編輯彈窗 -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title" data-zh="編輯文章" data-en="Edit Post">編輯文章</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="post-title" placeholder="文章標題 / Post Title">
+                <input type="text" id="post-date" placeholder="日期 / Date (e.g., 2024.12)">
+                <textarea id="post-content" placeholder="文章內容 / Post Content" rows="6"></textarea>
+                <input type="text" id="post-tags" placeholder="標籤（用逗號分隔）/ Tags (comma separated)">
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" onclick="closeModal()" data-zh="取消" data-en="Cancel">取消</button>
+                <button class="save-btn" onclick="savePost()" data-zh="儲存" data-en="Save">儲存</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p data-zh="© 2024 我的部落格. 持續學習，不斷進步 💪" data-en="© 2024 My Blog. Keep learning, keep growing 💪">© 2024 我的部落格.
+            持續學習，不斷進步 💪</p>
+    </footer>
+
+    <script src="lang.js"></script>
+    <script src="editor.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadPosts('competitive');
+        });
+    </script>
+</body>
+
+</html>

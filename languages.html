@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>語言學習 | Languages</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-zh="首頁" data-en="Home">首頁</a></li>
+                <li><a href="competitive.html" data-zh="刷題感想" data-en="Problem Solving">刷題感想</a></li>
+                <li><a href="languages.html" class="active" data-zh="語言學習" data-en="Languages">語言學習</a></li>
+                <li><a href="school.html" data-zh="學校進度" data-en="School">學校進度</a></li>
+                <li><a href="projects.html" data-zh="專案經驗" data-en="Projects">專案經驗</a></li>
+                <li><a href="contact.html" data-zh="聯繫我" data-en="Contact">聯繫我</a></li>
+                <li class="lang-switcher">
+                    <select id="language-select" onchange="switchLanguage(this.value)">
+                        <option value="zh">繁體中文</option>
+                        <option value="en">English</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1 data-zh="💻 語言學習進度" data-en="💻 Language Learning Progress">💻 語言學習進度</h1>
+            <p data-zh="追蹤我的程式語言學習旅程" data-en="Tracking my programming language learning journey">追蹤我的程式語言學習旅程</p>
+        </section>
+
+        <section class="content-section">
+            <div class="toolbar">
+                <button class="add-btn" onclick="addNewLanguage()" data-zh="+ 新增語言" data-en="+ Add Language">+
+                    新增語言</button>
+            </div>
+
+            <div id="languages-list" class="progress-grid">
+                <!-- 語言進度會動態載入 -->
+            </div>
+        </section>
+    </main>
+
+    <!-- 編輯彈窗 -->
+    <div id="lang-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-zh="編輯語言進度" data-en="Edit Language Progress">編輯語言進度</h2>
+                <button class="close-btn" onclick="closeLangModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="lang-name" placeholder="語言名稱 / Language Name">
+                <div class="progress-input">
+                    <label data-zh="進度" data-en="Progress">進度</label>
+                    <input type="range" id="lang-progress" min="0" max="100" value="50">
+                    <span id="progress-value">50%</span>
+                </div>
+                <textarea id="lang-desc" placeholder="已學習內容 / What you've learned" rows="3"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" onclick="closeLangModal()" data-zh="取消" data-en="Cancel">取消</button>
+                <button class="save-btn" onclick="saveLanguage()" data-zh="儲存" data-en="Save">儲存</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p data-zh="© 2024 我的部落格. 持續學習，不斷進步 💪" data-en="© 2024 My Blog. Keep learning, keep growing 💪">© 2024 我的部落格.
+            持續學習，不斷進步 💪</p>
+    </footer>
+
+    <script src="lang.js"></script>
+    <script src="editor.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadLanguages();
+
+            // 進度條即時更新
+            const slider = document.getElementById('lang-progress');
+            const output = document.getElementById('progress-value');
+            slider.oninput = function () {
+                output.textContent = this.value + '%';
+            }
+        });
+    </script>
+</body>
+
+</html>
