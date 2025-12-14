@@ -24,10 +24,16 @@
                 <li><a href="projects.html" data-zh="專案經驗" data-en="Projects">專案經驗</a></li>
                 <li><a href="contact.html" class="active" data-zh="聯繫我" data-en="Contact">聯繫我</a></li>
                 <li class="lang-switcher">
-                    <select id="language-select" onchange="switchLanguage(this.value)">
-                        <option value="zh">繁體中文</option>
-                        <option value="en">English</option>
-                    </select>
+                    <div class="custom-select" id="lang-dropdown">
+                        <div class="select-selected" onclick="toggleDropdown()">
+                            <span id="selected-lang">繁體中文</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-options">
+                            <div class="select-option" data-value="zh" onclick="selectLanguage('zh')">繁體中文</div>
+                            <div class="select-option" data-value="en" onclick="selectLanguage('en')">English</div>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </nav>

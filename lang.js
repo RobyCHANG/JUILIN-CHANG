@@ -9,6 +9,12 @@ function switchLanguage(lang) {
         }
     });
 
+    // 更新選擇器顯示
+    const selectedLang = document.getElementById('selected-lang');
+    if (selectedLang) {
+        selectedLang.textContent = lang === 'zh' ? '繁體中文' : 'English';
+    }
+
     // 更新 HTML lang 屬性
     document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
 
@@ -16,21 +22,38 @@ function switchLanguage(lang) {
     localStorage.setItem('preferredLanguage', lang);
 }
 
+// ==================== 自定義下拉選單 ====================
+function toggleDropdown() {
+    const dropdown = document.getElementById('lang-dropdown');
+    dropdown.classList.toggle('open');
+}
+
+function selectLanguage(lang) {
+    switchLanguage(lang);
+    toggleDropdown();
+}
+
+// 點擊其他地方關閉下拉選單
+document.addEventListener('click', function (e) {
+    const dropdown = document.getElementById('lang-dropdown');
+    if (dropdown && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+    }
+});
+
 // ==================== 開發者模式 ====================
 let clickCount = 0;
 let clickTimer = null;
 const CLICK_THRESHOLD = 5;
-const CLICK_TIMEOUT = 2000; // 2秒內要點擊5次
+const CLICK_TIMEOUT = 2000;
 
 function initDevMode() {
-    // 檢查是否已經是開發者模式
     const isDevMode = localStorage.getItem('devMode') === 'true';
     if (isDevMode) {
         document.body.classList.add('dev-mode');
         showDevModeIndicator();
     }
 
-    // 綁定標題點擊事件
     const title = document.querySelector('h1');
     if (title) {
         title.style.cursor = 'default';
@@ -41,17 +64,12 @@ function initDevMode() {
 function handleTitleClick() {
     clickCount++;
 
-    // 重置計時器
-    if (clickTimer) {
-        clearTimeout(clickTimer);
-    }
+    if (clickTimer) clearTimeout(clickTimer);
 
-    // 設置超時重置
     clickTimer = setTimeout(() => {
         clickCount = 0;
     }, CLICK_TIMEOUT);
 
-    // 達到門檻
     if (clickCount >= CLICK_THRESHOLD) {
         toggleDevMode();
         clickCount = 0;
@@ -73,13 +91,12 @@ function toggleDevMode() {
 }
 
 function showDevModeIndicator() {
-    // 如果已存在則不重複創建
     if (document.getElementById('dev-indicator')) return;
 
     const indicator = document.createElement('div');
     indicator.id = 'dev-indicator';
     indicator.innerHTML = '🛠️ DEV';
-    indicator.title = '點擊標題5次可退出開發者模式';
+    indicator.title = '點擊退出開發者模式';
     indicator.onclick = () => {
         if (confirm('確定要退出開發者模式嗎？')) {
             toggleDevMode();
@@ -90,13 +107,10 @@ function showDevModeIndicator() {
 
 function hideDevModeIndicator() {
     const indicator = document.getElementById('dev-indicator');
-    if (indicator) {
-        indicator.remove();
-    }
+    if (indicator) indicator.remove();
 }
 
 function showToast(message, type = 'info') {
-    // 移除舊的 toast
     const oldToast = document.getElementById('toast');
     if (oldToast) oldToast.remove();
 
@@ -106,10 +120,7 @@ function showToast(message, type = 'info') {
     toast.textContent = message;
     document.body.appendChild(toast);
 
-    // 動畫顯示
     setTimeout(() => toast.classList.add('show'), 10);
-
-    // 3秒後消失
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 300);
@@ -118,14 +129,7 @@ function showToast(message, type = 'info') {
 
 // 頁面載入時初始化
 document.addEventListener('DOMContentLoaded', function () {
-    // 語言設定
     const savedLang = localStorage.getItem('preferredLanguage') || 'zh';
-    const select = document.getElementById('language-select');
-    if (select) {
-        select.value = savedLang;
-    }
     switchLanguage(savedLang);
-
-    // 開發者模式
     initDevMode();
 });
