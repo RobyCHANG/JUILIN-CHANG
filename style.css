@@ -605,7 +605,17 @@ h3 {
 }
 
 /* ==================== 編輯/刪除按鈕 ==================== */
+/* 預設隱藏，只在開發者模式顯示 */
+.toolbar,
 .item-actions {
+    display: none;
+}
+
+.dev-mode .toolbar {
+    display: flex;
+}
+
+.dev-mode .item-actions {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -615,10 +625,10 @@ h3 {
     transition: opacity 0.2s ease;
 }
 
-.blog-item:hover .item-actions,
-.progress-item:hover .item-actions,
-.timeline-content:hover .item-actions,
-.project-item:hover .item-actions {
+.dev-mode .blog-item:hover .item-actions,
+.dev-mode .progress-item:hover .item-actions,
+.dev-mode .timeline-content:hover .item-actions,
+.dev-mode .project-item:hover .item-actions {
     opacity: 1;
 }
 
@@ -927,12 +937,66 @@ footer {
         left: -30px;
     }
 
-    .item-actions {
-        opacity: 1;
-    }
-
     .modal-content {
         width: 95%;
         margin: 16px;
     }
+
+    .dev-mode .item-actions {
+        opacity: 1;
+    }
+}
+
+/* ==================== 開發者模式指示器 ==================== */
+#dev-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--gradient-2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+    transition: all 0.3s ease;
+}
+
+#dev-indicator:hover {
+    transform: scale(1.05);
+}
+
+/* Toast 通知 */
+.toast {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 2001;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-success {
+    background: rgba(34, 197, 94, 0.9);
+    color: white;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+}
+
+.toast-info {
+    background: rgba(99, 102, 241, 0.9);
+    color: white;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
