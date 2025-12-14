@@ -293,7 +293,7 @@ function closeCourseModal() {
 // ==================== 專案 ====================
 let currentProjectIndex = -1;
 const DEFAULT_PROJECTS = [
-    { icon: '🌐', name: '個人網站', desc: '使用 HTML、CSS、JavaScript 打造個人部落格，記錄學習歷程。', tags: ['HTML', 'CSS', 'JavaScript'], link: '' },
+    { icon: '🌐', name: '個人網站', desc: '使用 HTML、CSS、JavaScript 打造個人部落格，記錄學習歷程。', tags: ['HTML', 'CSS', 'JavaScript'], link: 'https://github.com/RobyCHANG/JUILIN-CHANG' },
     { icon: '🐍', name: 'Python 小工具', desc: '開發自動化腳本，包含檔案整理、資料處理等實用工具。', tags: ['Python', 'Automation'], link: '' },
     { icon: '📝', name: '待辦事項應用', desc: '練習專案：使用 JavaScript 實作簡單的待辦事項管理功能。', tags: ['JavaScript', 'LocalStorage'], link: '' }
 ];
