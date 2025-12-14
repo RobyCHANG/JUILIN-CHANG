@@ -385,9 +385,20 @@ function closeProjectModal() {
     document.getElementById('project-modal').classList.remove('show');
 }
 
-// 點擊彈窗外部關閉
-document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('modal')) {
+// 點擊彈窗外部關閉（使用 mousedown 避免選取文字時誤觸）
+document.addEventListener('mousedown', function (e) {
+    // 只有直接點擊 modal 背景才關閉
+    if (e.target.classList.contains('modal') && e.target.classList.contains('show')) {
         e.target.classList.remove('show');
     }
 });
+
+// 阻止 modal-content 內的點擊事件冒泡
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.modal-content').forEach(function (content) {
+        content.addEventListener('mousedown', function (e) {
+            e.stopPropagation();
+        });
+    });
+});
+
