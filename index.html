@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>程式學習日誌 | Coding Journey</title>
+    <title>我的部落格 | My Blog</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -32,8 +36,10 @@
     <main>
         <!-- 首頁區塊 -->
         <section id="home" class="hero">
-            <h1 data-zh="程式學習日誌" data-en="Coding Journey">程式學習日誌</h1>
-            <p data-zh="一個程式初學者的成長紀錄 🚀" data-en="A beginner programmer's growth diary 🚀">一個程式初學者的成長紀錄 🚀</p>
+            <h1 data-zh="我的部落格" data-en="My Blog">我的部落格</h1>
+            <p data-zh="國立臺南大學資訊工程學系 大一 🎓"
+                data-en="Freshman at NUTN, Dept. of Computer Science & Information Engineering 🎓">國立臺南大學資訊工程學系 大一 🎓
+            </p>
         </section>
 
         <!-- 競賽刷題感想 -->
@@ -217,8 +223,8 @@
     </main>
 
     <footer>
-        <p data-zh="© 2024 程式學習日誌. 持續學習，不斷進步 💪" data-en="© 2024 Coding Journey. Keep learning, keep growing 💪">© 2024
-            程式學習日誌. 持續學習，不斷進步 💪</p>
+        <p data-zh="© 2024 我的部落格. 持續學習，不斷進步 💪" data-en="© 2024 My Blog. Keep learning, keep growing 💪">© 2024
+            我的部落格. 持續學習，不斷進步 💪</p>
     </footer>
 
     <script>
@@ -237,7 +243,7 @@
             document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
 
             // 更新頁面標題
-            document.title = lang === 'zh' ? '程式學習日誌 | Coding Journey' : 'Coding Journey';
+            document.title = lang === 'zh' ? '我的部落格 | My Blog' : 'My Blog';
 
             // 儲存語言偏好
             localStorage.setItem('preferredLanguage', lang);
