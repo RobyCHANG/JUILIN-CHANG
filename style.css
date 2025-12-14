@@ -122,6 +122,44 @@ footer {
     font-size: 12px;
 }
 
+/* 語言切換下拉選單 */
+.lang-switcher {
+    position: relative;
+}
+
+.lang-switcher select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 30px 8px 15px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='white' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.lang-switcher select:hover {
+    background-color: #004499;
+}
+
+.lang-switcher select:focus {
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.3);
+}
+
+.lang-switcher select option {
+    background-color: white;
+    color: #1d1d1f;
+    padding: 10px;
+}
+
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;

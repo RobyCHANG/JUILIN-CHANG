@@ -1,56 +1,69 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>游戏开发之旅</title>
+    <title>遊戲開發之旅</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="#home">首页</a></li>
-                <li><a href="#about">关于</a></li>
-                <li><a href="#projects">项目</a></li>
-                <li><a href="#skills">技能</a></li>
-                <li><a href="#future">展望</a></li>
+                <li><a href="#home" data-zh="首頁" data-en="Home">首頁</a></li>
+                <li><a href="#about" data-zh="關於" data-en="About">關於</a></li>
+                <li><a href="#projects" data-zh="專案" data-en="Projects">專案</a></li>
+                <li><a href="#skills" data-zh="技能" data-en="Skills">技能</a></li>
+                <li><a href="#future" data-zh="展望" data-en="Future">展望</a></li>
+                <li class="lang-switcher">
+                    <select id="language-select" onchange="switchLanguage(this.value)">
+                        <option value="zh">繁體中文</option>
+                        <option value="en">English</option>
+                    </select>
+                </li>
             </ul>
         </nav>
     </header>
-    
+
     <main>
         <section id="home" class="hero">
-            <h1>游戏开发之旅</h1>
-            <p>探索、创新、编码。</p>
+            <h1 data-zh="遊戲開發之旅" data-en="Game Development Journey">遊戲開發之旅</h1>
+            <p data-zh="探索、創新、編碼。" data-en="Explore, Innovate, Code.">探索、創新、編碼。</p>
         </section>
 
         <section id="about">
-            <h2>关于我</h2>
-            <p>热衷于将创意转化为引人入胜的游戏体验。</p>
+            <h2 data-zh="關於我" data-en="About Me">關於我</h2>
+            <p data-zh="熱衷於將創意轉化為引人入勝的遊戲體驗。"
+                data-en="Passionate about transforming ideas into captivating gaming experiences.">熱衷於將創意轉化為引人入勝的遊戲體驗。
+            </p>
         </section>
 
         <section id="projects">
-            <h2>项目展示</h2>
+            <h2 data-zh="專案展示" data-en="Project Showcase">專案展示</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <h3>文字冒险</h3>
-                    <p>基于Python的交互式文字冒险游戏。</p>
+                    <h3 data-zh="文字冒險" data-en="Text Adventure">文字冒險</h3>
+                    <p data-zh="基於Python的互動式文字冒險遊戲。" data-en="An interactive text adventure game built with Python.">
+                        基於Python的互動式文字冒險遊戲。</p>
                 </div>
                 <div class="project-item">
-                    <h3>2D平台跳跃</h3>
-                    <p>使用Unity引擎开发的2D平台游戏。</p>
+                    <h3 data-zh="2D平台跳躍" data-en="2D Platformer">2D平台跳躍</h3>
+                    <p data-zh="使用Unity引擎開發的2D平台遊戲。" data-en="A 2D platform game developed with Unity engine.">
+                        使用Unity引擎開發的2D平台遊戲。</p>
                 </div>
                 <div class="project-item">
-                    <h3>科幻RPG</h3>
-                    <p>融合科幻元素的RPG游戏（开发中）。</p>
+                    <h3 data-zh="科幻RPG" data-en="Sci-Fi RPG">科幻RPG</h3>
+                    <p data-zh="融合科幻元素的RPG遊戲（開發中）。" data-en="An RPG game with sci-fi elements (In Development).">
+                        融合科幻元素的RPG遊戲（開發中）。</p>
                 </div>
             </div>
         </section>
 
         <section id="skills">
-            <h2>技能与工具</h2>
+            <h2 data-zh="技能與工具" data-en="Skills & Tools">技能與工具</h2>
             <ul class="skill-list">
                 <li><a href="https://www.python.org/" target="_blank">Python</a></li>
                 <li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/" target="_blank">C#</a></li>
@@ -62,15 +75,48 @@
         </section>
 
         <section id="future">
-            <h2>未来展望</h2>
-            <p>深入学习计算机科学,创立游戏工作室,开发激发想象力的创新游戏。</p>
+            <h2 data-zh="未來展望" data-en="Future Vision">未來展望</h2>
+            <p data-zh="深入學習計算機科學，創立遊戲工作室，開發激發想像力的創新遊戲。"
+                data-en="Dive deeper into computer science, establish a game studio, and develop innovative games that spark imagination.">
+                深入學習計算機科學，創立遊戲工作室，開發激發想像力的創新遊戲。</p>
         </section>
     </main>
-    
+
     <footer>
-        <p>&copy; 2023 游戏开发爱好者. 保留所有权利。</p>
+        <p data-zh="© 2023 遊戲開發愛好者. 保留所有權利。" data-en="© 2023 Game Development Enthusiast. All rights reserved.">© 2023
+            遊戲開發愛好者. 保留所有權利。</p>
     </footer>
-    
+
+    <script>
+        // 語言切換功能
+        function switchLanguage(lang) {
+            const elements = document.querySelectorAll('[data-zh][data-en]');
+            elements.forEach(el => {
+                if (lang === 'zh') {
+                    el.textContent = el.getAttribute('data-zh');
+                } else if (lang === 'en') {
+                    el.textContent = el.getAttribute('data-en');
+                }
+            });
+
+            // 更新 HTML lang 屬性
+            document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+
+            // 更新頁面標題
+            document.title = lang === 'zh' ? '遊戲開發之旅' : 'Game Development Journey';
+
+            // 儲存語言偏好
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // 頁面載入時檢查儲存的語言偏好
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'zh';
+            document.getElementById('language-select').value = savedLang;
+            switchLanguage(savedLang);
+        });
+    </script>
     <script src="ai-tool.js"></script>
 </body>
+
 </html>
