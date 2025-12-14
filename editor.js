@@ -199,9 +199,9 @@ function closeLangModal() {
 // ==================== 學校課程 ====================
 let currentCourseIndex = -1;
 const DEFAULT_COURSES = [
-    { name: '資料結構', desc: '學習陣列、鏈結串列、堆疊、佇列等基礎資料結構的概念與實作。', status: 'in-progress' },
-    { name: '程式設計基礎', desc: '掌握程式設計的基本概念，包括變數、流程控制、函數等。', status: 'completed' },
-    { name: '網頁設計概論', desc: '學習 HTML、CSS 基礎，了解網頁架構與樣式設計。', status: 'completed' }
+    { name: 'CS50: Introduction to Computer Science | Harvard University', desc: '哈佛大學計算機科學導論，目前進度：第三週', status: 'in-progress' },
+    { name: 'CS61A: Structure and Interpretation of Computer Programs | UC Berkeley', desc: '加州大學柏克萊分校程式設計課程，尚未開始', status: 'planned' },
+    { name: 'CS61B: Data Structures | UC Berkeley', desc: '加州大學柏克萊分校資料結構課程，尚未開始', status: 'planned' }
 ];
 
 function getCourses() {
